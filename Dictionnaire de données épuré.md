@@ -2,54 +2,85 @@
 
 | Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
 |--------|----------|------|----------|-----|-------------|-------------|
-| **CLIENT** | NumClient | Entier | - | PK | Oui | Identifiant unique du client |
-| CLIENT | NomClient | Chaîne | 50 | - | Oui | Nom de famille du client |
-| CLIENT | PrenomClient | Chaîne | 50 | - | Oui | Prénom du client |
-| CLIENT | AdresseClient | Chaîne | 200 | - | Oui | Adresse postale complète |
-| CLIENT | TelClient | Chaîne | 15 | - | Non | Numéro de téléphone |
-| CLIENT | EmailClient | Chaîne | 100 | UQ | Non | Adresse email (unique) |
-| CLIENT | DateNaissanceClient | Date | - | - | Oui | Date de naissance |
-| **CIRCUIT** | CodeCircuit | Chaîne | 10 | PK | Oui | Code unique du circuit |
-| CIRCUIT | NomCircuit | Chaîne | 100 | - | Oui | Nom du circuit touristique |
-| CIRCUIT | DescriptionCircuit | Texte | 500 | - | Non | Description détaillée |
-| CIRCUIT | DateDepart | Date | - | - | Oui | Date de départ du circuit |
-| CIRCUIT | DateRetour | Date | - | - | Oui | Date de retour du circuit |
-| CIRCUIT | PrixCircuit | Décimal | 10,2 | - | Oui | Prix du circuit |
-| CIRCUIT | NbPlacesMax | Entier | - | - | Oui | Nombre maximum de places |
-| CIRCUIT | StatutCircuit | Chaîne | 20 | - | Oui | Statut (Programmé, Maintenu, Annulé) |
-| CIRCUIT | NumAccompagnateur | Entier | - | FK | Oui | Numéro de l'accompagnateur |
-| CIRCUIT | CodePeriode | Chaîne | 10 | FK | Oui | Code de la période |
-| **VILLE** | CodeVille | Chaîne | 10 | PK | Oui | Code unique de la ville |
-| VILLE | NomVille | Chaîne | 100 | UQ | Oui | Nom de la ville (unique) |
+| **CLIENT** | Num_Client | Entier | - | PK | Oui | Identifiant unique du client |
+| CLIENT | Nom_Client | Chaîne | 50 | - | Oui | Nom de famille du client |
+| CLIENT | Prenom_Client | Chaîne | 50 | - | Oui | Prénom du client |
+| CLIENT | Adresse_Client | Chaîne | 200 | - | Oui | Adresse postale complète |
+| CLIENT | Tel_Client | Chaîne | 15 | - | Non | Numéro de téléphone |
+| CLIENT | Email_Client | Chaîne | 100 | UQ | Non | Adresse email (unique) |
+| CLIENT | Date_Naissance_Client | Date | - | - | Oui | Date de naissance |
+---
+
+
+| Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
+|--------|----------|------|----------|-----|-------------|-------------|
+|CIRCUIT| Code_Circuit | Chaîne | 10 | PK | Oui | Code unique du circuit |
+| CIRCUIT | Nom_Circuit | Chaîne | 100 | - | Oui | Nom du circuit touristique |
+| CIRCUIT | Description_Circuit | Texte | 500 | - | Non | Description détaillée |
+| CIRCUIT | Date_Depart | Date | - | - | Oui | Date de départ du circuit |
+| CIRCUIT | Date_Retour | Date | - | - | Oui | Date de retour du circuit |
+| CIRCUIT | Prix_Circuit | Décimal | 10,2 | - | Oui | Prix du circuit |
+| CIRCUIT | Nb_Places_Max | Entier | - | - | Oui | Nombre maximum de places |
+| CIRCUIT | Statut_Circuit | Chaîne | 20 | - | Oui | Statut (Programmé, Maintenu, Annulé) |
+| CIRCUIT | Num_Accompagnateur | Entier | - | FK | Oui | Numéro de l'accompagnateur |
+| CIRCUIT | Code_Periode | Chaîne | 10 | FK | Oui | Code de la période |
+---
+
+
+| Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
+|--------|----------|------|----------|-----|-------------|-------------|
+| **VILLE** | Code_Ville | Chaîne | 10 | PK | Oui | Code unique de la ville |
+| VILLE | Nom_Ville | Chaîne | 100 | UQ | Oui | Nom de la ville (unique) |
 | VILLE | Pays | Chaîne | 50 | - | Oui | Pays de la ville |
 | VILLE | Description | Texte | 300 | - | Non | Description touristique |
-| **HÔTEL** | NumHotel | Entier | - | PK | Oui | Numéro unique de l'hôtel |
-| HÔTEL | NomHotel | Chaîne | 100 | - | Oui | Nom de l'hôtel |
-| HÔTEL | AdresseHotel | Chaîne | 200 | - | Oui | Adresse de l'hôtel |
-| HÔTEL | ClasseHotel | Entier | - | - | Non | Classification (1-5 étoiles) |
-| HÔTEL | TelHotel | Chaîne | 15 | - | Non | Téléphone de l'hôtel |
-| HÔTEL | CodeVille | Chaîne | 10 | FK | Oui | Code de la ville |
-| **ACCOMPAGNATEUR** | NumAccompagnateur | Entier | - | PK | Oui | Numéro unique accompagnateur |
-| ACCOMPAGNATEUR | NomAccomp | Chaîne | 50 | - | Oui | Nom de l'accompagnateur |
-| ACCOMPAGNATEUR | PrenomAccomp | Chaîne | 50 | - | Oui | Prénom de l'accompagnateur |
-| ACCOMPAGNATEUR | TelAccomp | Chaîne | 15 | - | Non | Téléphone |
-| ACCOMPAGNATEUR | EmailAccomp | Chaîne | 100 | - | Non | Email professionnel |
+---
+
+
+| Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
+|--------|----------|------|----------|-----|-------------|-------------|
+| **HÔTEL** | Num_Hotel | Entier | - | PK | Oui | Numéro unique de l'hôtel |
+| HÔTEL | Nom_Hotel | Chaîne | 100 | - | Oui | Nom de l'hôtel |
+| HÔTEL | Adresse_Hotel | Chaîne | 200 | - | Oui | Adresse de l'hôtel |
+| HÔTEL | Classe_Hotel | Entier | - | - | Non | Classification (1-5 étoiles) |
+| HÔTEL | Tel_Hotel | Chaîne | 15 | - | Non | Téléphone de l'hôtel |
+| HÔTEL | Code_Ville | Chaîne | 10 | FK | Oui | Code de la ville |
+---
+
+
+| Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
+|--------|----------|------|----------|-----|-------------|-------------|
+| **ACCOMPAGNATEUR** | Num_Accompagnateur | Entier | - | PK | Oui | Numéro unique accompagnateur |
+| ACCOMPAGNATEUR | Nom_Accomp | Chaîne | 50 | - | Oui | Nom de l'accompagnateur |
+| ACCOMPAGNATEUR | Prenom_Accomp | Chaîne | 50 | - | Oui | Prénom de l'accompagnateur |
+| ACCOMPAGNATEUR | Tel_Accomp | Chaîne | 15 | - | Non | Téléphone |
+| ACCOMPAGNATEUR | Email_Accomp | Chaîne | 100 | - | Non | Email professionnel |
 | ACCOMPAGNATEUR | Langues | Chaîne | 100 | - | Non | Langues parlées |
-| **RÉSERVATION** | NumReservation | Entier | - | PK | Oui | Numéro unique de réservation |
-| RÉSERVATION | DateReservation | Date | - | - | Oui | Date de la demande |
-| RÉSERVATION | StatutReservation | Chaîne | 20 | - | Oui | En attente, Confirmée, Définitive, Annulée |
-| RÉSERVATION | MontantAcompte | Décimal | 10,2 | - | Non | Montant de l'acompte versé |
-| RÉSERVATION | DateAcompte | Date | - | - | Non | Date du versement acompte |
-| RÉSERVATION | MontantSolde | Décimal | 10,2 | - | Non | Montant du solde |
-| RÉSERVATION | DateSolde | Date | - | - | Non | Date du versement solde |
-| RÉSERVATION | NumClient | Entier | - | FK | Oui | Numéro du client |
-| RÉSERVATION | CodeCircuit | Chaîne | 10 | FK | Oui | Code du circuit |
-| **PÉRIODE** | CodePeriode | Chaîne | 10 | PK | Oui | Code de la période |
-| PÉRIODE | NomPeriode | Chaîne | 50 | - | Oui | Nom de la période (ex: Été 2025) |
-| PÉRIODE | DateDebut | Date | - | - | Oui | Date de début de période |
-| PÉRIODE | DateFin | Date | - | - | Oui | Date de fin de période |
-| PÉRIODE | DateLimiteD1 | Date | - | - | Oui | Date limite pour 2ème versement |
-| PÉRIODE | DateLimiteD2 | Date | - | - | Oui | Date limite maintien circuit |
+---
+
+
+| Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
+|--------|----------|------|----------|-----|-------------|-------------|
+| **RÉSERVATION** | Num_Reservation | Entier | - | PK | Oui | Numéro unique de réservation |
+| RÉSERVATION | Date_Reservation | Date | - | - | Oui | Date de la demande |
+| RÉSERVATION | Statut_Reservation | Chaîne | 20 | - | Oui | En attente, Confirmée, Définitive, Annulée |
+| RÉSERVATION | Montant_Acompte | Décimal | 10,2 | - | Non | Montant de l'acompte versé |
+| RÉSERVATION | Date_Acompte | Date | - | - | Non | Date du versement acompte |
+| RÉSERVATION | Montant_Solde | Décimal | 10,2 | - | Non | Montant du solde |
+| RÉSERVATION | Date_Solde | Date | - | - | Non | Date du versement solde |
+| RÉSERVATION | Num_Client | Entier | - | FK | Oui | Numéro du client |
+| RÉSERVATION | Code_Circuit | Chaîne | 10 | FK | Oui | Code du circuit |
+---
+
+
+| Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
+|--------|----------|------|----------|-----|-------------|-------------|
+| **PÉRIODE** | Code_Periode | Chaîne | 10 | PK | Oui | Code de la période |
+| PÉRIODE | Nom_Periode | Chaîne | 50 | - | Oui | Nom de la période (ex: Été 2025) |
+| PÉRIODE | Date_Debut | Date | - | - | Oui | Date de début de période |
+| PÉRIODE | Date_Fin | Date | - | - | Oui | Date de fin de période |
+| PÉRIODE | Date_LimiteD1 | Date | - | - | Oui | Date limite pour 2ème versement |
+| PÉRIODE | Date_LimiteD2 | Date | - | - | Oui | Date limite maintien circuit |
+---
 
 ### Relation ÉTAPE 
 | Attribut | Type | Longueur | Clé | Description |
@@ -59,6 +90,7 @@
 | NumOrdre | Entier | - | PK | Ordre de visite dans le circuit |
 | NbNuits | Entier | - | - | Nombre de nuits dans cette ville |
 | NumHotel | Entier | - | FK | Hôtel pour cette étape |
+---
 
 ## Justification des suppressions
 
