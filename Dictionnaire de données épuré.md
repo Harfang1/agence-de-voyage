@@ -51,7 +51,7 @@
 | PÉRIODE | DateLimiteD1 | Date | - | - | Oui | Date limite pour 2ème versement |
 | PÉRIODE | DateLimiteD2 | Date | - | - | Oui | Date limite maintien circuit |
 
-### Relation ÉTAPE (Many-to-Many entre CIRCUIT et VILLE)
+### Relation ÉTAPE 
 | Attribut | Type | Longueur | Clé | Description |
 |----------|------|----------|-----|-------------|
 | CodeCircuit | Chaîne | 10 | FK/PK | Code du circuit |
