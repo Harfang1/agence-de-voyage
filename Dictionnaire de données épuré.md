@@ -1,45 +1,68 @@
-# Dictionnaire de données épuré – Agence de voyage
+## Dictionnaire épuré 
 
-| **Entité**       | **Attribut**       | **Type**   | **Taille** | **Clé** | **Obligatoire** | **Description / Règle métier** |
-|------------------|-------------------|------------|------------|---------|-----------------|-------------------------------|
-| **CLIENT**       | id_client         | INTEGER    | —          | PK      | O               | Identifiant unique du client |
-|                  | nom               | VARCHAR    | 100        | —       | O               | Nom du client |
-|                  | prenom            | VARCHAR    | 100        | —       | O               | Prénom du client |
-|                  | email             | VARCHAR    | 255        | —       | N               | Adresse e-mail du client |
-|                  | telephone         | VARCHAR    | 20         | —       | N               | Numéro de téléphone |
-|                  | adresse           | VARCHAR    | 255        | —       | N               | Adresse postale du client |
-| **ACCOMPAGNATEUR** | id_accompagnateur | INTEGER   | —          | PK      | O               | Identifiant unique de l’accompagnateur |
-|                  | nom               | VARCHAR    | 100        | —       | O               | Nom de l’accompagnateur |
-|                  | prenom            | VARCHAR    | 100        | —       | O               | Prénom de l’accompagnateur |
-| **VILLE**        | id_ville          | INTEGER    | —          | PK      | O               | Identifiant unique de la ville |
-|                  | nom               | VARCHAR    | 100        | —       | O               | Nom de la ville |
-| **HOTEL**        | id_hotel          | INTEGER    | —          | PK      | O               | Identifiant unique de l’hôtel |
-|                  | nom               | VARCHAR    | 100        | —       | O               | Nom de l’hôtel |
-|                  | id_ville          | INTEGER    | —          | FK      | O               | Référence à VILLE (**RG2 : un seul hôtel par ville**) |
-| **CIRCUIT**      | id_circuit        | INTEGER    | —          | PK      | O               | Identifiant unique du circuit |
-|                  | date_depart       | DATE       | —          | —       | O               | Date de départ du circuit |
-|                  | date_arrivee      | DATE       | —          | —       | O               | Date d’arrivée du circuit |
-|                  | id_ville_depart   | INTEGER    | —          | FK      | O               | Référence à VILLE (départ) |
-|                  | id_ville_arrivee  | INTEGER    | —          | FK      | O               | Référence à VILLE (arrivée) |
-|                  | id_accompagnateur | INTEGER    | —          | FK      | O               | Référence à ACCOMPAGNATEUR (**RG4 : un seul par circuit**) |
-| **NUIT**         | id_nuit           | INTEGER    | —          | PK      | O               | Identifiant unique de la nuit |
-|                  | id_circuit        | INTEGER    | —          | FK      | O               | Référence au circuit |
-|                  | id_hotel          | INTEGER    | —          | FK      | O               | Hôtel de la nuit (**RG5**) |
-|                  | date_nuit         | DATE       | —          | —       | O               | Date de la nuit |
-|                  | ordre_nuit        | INTEGER    | —          | —       | O               | Ordre de la nuit dans le circuit |
-| **RESERVATION**  | id_reservation    | INTEGER    | —          | PK      | O               | Identifiant unique de la réservation |
-|                  | id_client         | INTEGER    | —          | FK      | O               | Référence au client |
-|                  | id_circuit        | INTEGER    | —          | FK      | O               | Référence au circuit réservé |
-|                  | date_reservation  | DATE       | —          | —       | O               | Date de la réservation |
-|                  | acompte_verse     | DECIMAL    | —          | —       | N               | Montant de l’acompte (**RG12**) |
-|                  | solde_paye        | DECIMAL    | —          | —       | N               | Montant du solde payé (**RG12**) |
+| Entité | Attribut | Type | Longueur | Clé | Obligatoire | Description |
+|--------|----------|------|----------|-----|-------------|-------------|
+| **CLIENT** | NumClient | Entier | - | PK | Oui | Identifiant unique du client |
+| CLIENT | NomClient | Chaîne | 50 | - | Oui | Nom de famille du client |
+| CLIENT | PrenomClient | Chaîne | 50 | - | Oui | Prénom du client |
+| CLIENT | AdresseClient | Chaîne | 200 | - | Oui | Adresse postale complète |
+| CLIENT | TelClient | Chaîne | 15 | - | Non | Numéro de téléphone |
+| CLIENT | EmailClient | Chaîne | 100 | UQ | Non | Adresse email (unique) |
+| CLIENT | DateNaissanceClient | Date | - | - | Oui | Date de naissance |
+| **CIRCUIT** | CodeCircuit | Chaîne | 10 | PK | Oui | Code unique du circuit |
+| CIRCUIT | NomCircuit | Chaîne | 100 | - | Oui | Nom du circuit touristique |
+| CIRCUIT | DescriptionCircuit | Texte | 500 | - | Non | Description détaillée |
+| CIRCUIT | DateDepart | Date | - | - | Oui | Date de départ du circuit |
+| CIRCUIT | DateRetour | Date | - | - | Oui | Date de retour du circuit |
+| CIRCUIT | PrixCircuit | Décimal | 10,2 | - | Oui | Prix du circuit |
+| CIRCUIT | NbPlacesMax | Entier | - | - | Oui | Nombre maximum de places |
+| CIRCUIT | StatutCircuit | Chaîne | 20 | - | Oui | Statut (Programmé, Maintenu, Annulé) |
+| CIRCUIT | NumAccompagnateur | Entier | - | FK | Oui | Numéro de l'accompagnateur |
+| CIRCUIT | CodePeriode | Chaîne | 10 | FK | Oui | Code de la période |
+| **VILLE** | CodeVille | Chaîne | 10 | PK | Oui | Code unique de la ville |
+| VILLE | NomVille | Chaîne | 100 | UQ | Oui | Nom de la ville (unique) |
+| VILLE | Pays | Chaîne | 50 | - | Oui | Pays de la ville |
+| VILLE | Description | Texte | 300 | - | Non | Description touristique |
+| **HÔTEL** | NumHotel | Entier | - | PK | Oui | Numéro unique de l'hôtel |
+| HÔTEL | NomHotel | Chaîne | 100 | - | Oui | Nom de l'hôtel |
+| HÔTEL | AdresseHotel | Chaîne | 200 | - | Oui | Adresse de l'hôtel |
+| HÔTEL | ClasseHotel | Entier | - | - | Non | Classification (1-5 étoiles) |
+| HÔTEL | TelHotel | Chaîne | 15 | - | Non | Téléphone de l'hôtel |
+| HÔTEL | CodeVille | Chaîne | 10 | FK | Oui | Code de la ville |
+| **ACCOMPAGNATEUR** | NumAccompagnateur | Entier | - | PK | Oui | Numéro unique accompagnateur |
+| ACCOMPAGNATEUR | NomAccomp | Chaîne | 50 | - | Oui | Nom de l'accompagnateur |
+| ACCOMPAGNATEUR | PrenomAccomp | Chaîne | 50 | - | Oui | Prénom de l'accompagnateur |
+| ACCOMPAGNATEUR | TelAccomp | Chaîne | 15 | - | Non | Téléphone |
+| ACCOMPAGNATEUR | EmailAccomp | Chaîne | 100 | - | Non | Email professionnel |
+| ACCOMPAGNATEUR | Langues | Chaîne | 100 | - | Non | Langues parlées |
+| **RÉSERVATION** | NumReservation | Entier | - | PK | Oui | Numéro unique de réservation |
+| RÉSERVATION | DateReservation | Date | - | - | Oui | Date de la demande |
+| RÉSERVATION | StatutReservation | Chaîne | 20 | - | Oui | En attente, Confirmée, Définitive, Annulée |
+| RÉSERVATION | MontantAcompte | Décimal | 10,2 | - | Non | Montant de l'acompte versé |
+| RÉSERVATION | DateAcompte | Date | - | - | Non | Date du versement acompte |
+| RÉSERVATION | MontantSolde | Décimal | 10,2 | - | Non | Montant du solde |
+| RÉSERVATION | DateSolde | Date | - | - | Non | Date du versement solde |
+| RÉSERVATION | NumClient | Entier | - | FK | Oui | Numéro du client |
+| RÉSERVATION | CodeCircuit | Chaîne | 10 | FK | Oui | Code du circuit |
+| **PÉRIODE** | CodePeriode | Chaîne | 10 | PK | Oui | Code de la période |
+| PÉRIODE | NomPeriode | Chaîne | 50 | - | Oui | Nom de la période (ex: Été 2025) |
+| PÉRIODE | DateDebut | Date | - | - | Oui | Date de début de période |
+| PÉRIODE | DateFin | Date | - | - | Oui | Date de fin de période |
+| PÉRIODE | DateLimiteD1 | Date | - | - | Oui | Date limite pour 2ème versement |
+| PÉRIODE | DateLimiteD2 | Date | - | - | Oui | Date limite maintien circuit |
 
----
+### Relation ÉTAPE (Many-to-Many entre CIRCUIT et VILLE)
+| Attribut | Type | Longueur | Clé | Description |
+|----------|------|----------|-----|-------------|
+| CodeCircuit | Chaîne | 10 | FK/PK | Code du circuit |
+| CodeVille | Chaîne | 10 | FK/PK | Code de la ville |
+| NumOrdre | Entier | - | PK | Ordre de visite dans le circuit |
+| NbNuits | Entier | - | - | Nombre de nuits dans cette ville |
+| NumHotel | Entier | - | FK | Hôtel pour cette étape |
 
-## Contraintes globales (RG)
-- **RG2** : un seul hôtel par ville.  
-- **RG4** : un seul accompagnateur par circuit.  
-- **RG5** : chaque nuit d’un circuit doit être associée à un hôtel.  
-- **RG6** : un circuit comprend au moins deux villes.  
-- **RG8** : une ville ne peut être point de départ ou d’arrivée que pour un seul circuit à une date donnée.  
-- **RG12** : une réservation peut contenir un acompte et/ou un solde.
+## Justification des suppressions
+
+1. **NbPlacesReservees** : Redondant car calculable par COUNT() des réservations définitives
+2. **VilleDepartCode** dans CIRCUIT : Redondant car déterminable par ÉTAPE avec NumOrdre=1
+3. **Âge calculé** : Peut être déduit de DateNaissanceClient
+4. **Attributs système** : Dates de création/modification non demandées dans le métier
