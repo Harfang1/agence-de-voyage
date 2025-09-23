@@ -1,4 +1,4 @@
 faire le tableau ici
 
-| nom         |nom              |nom              |nom           |nom           |nom          |nom          |nom
+| Entité         |nom              |nom              |nom           |nom           |nom          |nom          |nom
 |-------------|-----------------|-----------------|--------------|--------------|-------------|-------------|-----
