@@ -1,5 +1,5 @@
 faire le tableau ici
 
-| Entité         |nom              |nom              |nom           |nom           |nom          |nom          |nom
+| Entité      |Attribut      |nom              |nom           |nom           |nom          |nom          |nom
 |-------------|-----------------|-----------------|--------------|--------------|-------------|-------------|-----
-|CLIENT
+|Client       | id_client | INTEGER
